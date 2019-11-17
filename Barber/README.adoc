@@ -1,0 +1,15 @@
+= 03-Quarkus-panache-nicoVasq
+
+== About
+This project is reimplementation of the 'Barber' project from exercise 01.
+The Hibernate ORM with *Panache* is now being used.
+
+== Using Panache
+
+The first step is to add the Panache dependency to the _pom.xml_
+[source,xml]
+<dependency>
+    <groupId>io.quarkus</groupId>
+    <artifactId>quarkus-hibernate-orm-panache</artifactId>
+</dependency>
+
