@@ -1,12 +1,9 @@
 package at.htl.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@NamedQueries({
-        @NamedQuery(name = "Haircolor.findAll", query = "select hc from Haircolor hc"),
-        @NamedQuery(name = "Haircolor.findByName", query = "select hc from Haircolor hc where hc.name = :NAME")
-})
 public class Haircolor extends Equipment {
 
     private String color;
@@ -23,6 +20,15 @@ public class Haircolor extends Equipment {
     }
     //endregion
 
+    //region Entity methods
+    public static List<Haircolor> findAllHaircolors(){
+        return Haircolor.findAll().list();
+    }
+
+    public static Haircolor findByName(String name){
+        return find("name", name).firstResult();
+    }
+    //endregion
 
     //region Getter Setter
     public String getColor() {

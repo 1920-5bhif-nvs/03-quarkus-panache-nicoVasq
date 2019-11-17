@@ -5,10 +5,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@NamedQueries({
-        @NamedQuery(name = "Customer.findAll", query = "select c from Customer c"),
-        @NamedQuery(name = "Customer.findByName", query = "select c from Customer c where c.name = :NAME")
-})
 public class Customer extends Person{
 
     private LocalDate lastVisited;
@@ -20,6 +16,16 @@ public class Customer extends Person{
     public Customer(String name, LocalDate lastVisited) {
         super(name);
         this.lastVisited = lastVisited;
+    }
+    //endregion
+
+    //region Entity methods
+    public static List<Customer> findAllCustomers(){
+        return Customer.findAll().list();
+    }
+
+    public static Customer findByName(String name){
+        return find("name", name).firstResult();
     }
     //endregion
 

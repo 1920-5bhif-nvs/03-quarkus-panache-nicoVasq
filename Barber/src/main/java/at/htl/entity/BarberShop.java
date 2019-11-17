@@ -9,15 +9,12 @@ import java.util.List;
 
 @Entity
 public class BarberShop extends PanacheEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @JsonbTransient
-    @OneToMany(mappedBy = "barberShop",cascade = CascadeType.ALL)
+    @JsonbTransient @OneToMany(mappedBy = "barberShop",cascade = CascadeType.ALL)
     private List<Employee> employees;
-    @OneToMany(cascade = CascadeType.ALL)
-    @JsonbTransient
+    @JsonbTransient @OneToMany(cascade = CascadeType.ALL)
     private List<Equipment> equipment;
 
     //region Constructor
@@ -31,9 +28,15 @@ public class BarberShop extends PanacheEntity {
     }
     //endregion
 
+    //region Entity methods
+    public static List<BarberShop> findAllBarbershops(){
+        return BarberShop.findAll().list();
+    }
 
-
-
+    public static BarberShop findByName(String name){
+        return find("name", name).firstResult();
+    }
+    //endregion
 
     //region Getter Setter
     public Long getId() {

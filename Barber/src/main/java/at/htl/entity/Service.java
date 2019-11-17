@@ -1,16 +1,16 @@
 package at.htl.entity;
 
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
-@NamedQueries({
-        @NamedQuery(name = "Service.findAll", query = "select s from Service s")
-})
-public class Service {
+public class Service extends PanacheEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
     private Customer customer;
@@ -37,6 +37,12 @@ public class Service {
         this.serviceType = serviceType;
         this.price = price;
         this.date = date;
+    }
+    //endregion
+
+    //region Entity methods
+    public static List<Service> findAllServices(){
+        return Service.findAll().list();
     }
     //endregion
 

@@ -14,7 +14,7 @@ import java.time.format.DateTimeFormatter;
 
 @ApplicationScoped
 public class InitBean {
-    
+
     @Transactional
     void init(@Observes StartupEvent ev){
         System.out.println("-----INIT-----");

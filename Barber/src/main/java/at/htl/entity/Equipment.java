@@ -1,18 +1,18 @@
 package at.htl.entity;
 
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
+
 import javax.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-
-public class Equipment {
-
+public class Equipment extends PanacheEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private Integer quantity;
 
-    //region Constuctor
+    //region Constructor
     public Equipment() {
     }
 

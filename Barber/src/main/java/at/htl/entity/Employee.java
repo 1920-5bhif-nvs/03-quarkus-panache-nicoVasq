@@ -6,9 +6,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Entity
-@NamedQueries({
-        @NamedQuery(name = "Employee.findAll", query = "select e from Employee e")
-})
 public class Employee extends Person{
 
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
@@ -32,8 +29,13 @@ public class Employee extends Person{
     }
     //endregion
 
-    //region Setter Getter
+    //region Entity methods
+    public static List<Employee> findAllEmployees(){
+        return Employee.findAll().list();
+    }
+    //endregion
 
+    //region Setter Getter
     public double getSalary() {
         return salary;
     }

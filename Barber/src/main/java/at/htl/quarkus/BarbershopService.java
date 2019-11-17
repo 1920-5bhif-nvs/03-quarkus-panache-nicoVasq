@@ -13,12 +13,9 @@ import java.util.List;
 @ApplicationScoped
 public class BarbershopService {
 
-    @Inject
-    EntityManager entityManager;
-
     public List<BarberShop> getAll(){
-       // TypedQuery<BarberShop> query = entityManager.createNamedQuery("BarberShop.findAll", BarberShop.class);
-       // return query.getResultList();
-        throw new NotYetImplementedException();
+        return BarberShop.findAllBarbershops();
     }
+
+    public BarberShop getByName(String name) { return BarberShop.findByName(name); }
 }

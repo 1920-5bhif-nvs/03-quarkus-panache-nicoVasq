@@ -11,12 +11,8 @@ import java.util.List;
 @ApplicationScoped
 public class EmployeeService {
 
-    @Inject
-    private EntityManager em;
-
     public List<Employee> findAll(){
-        TypedQuery<Employee> query = em.createNamedQuery("Employee.findAll",Employee.class);
-        return query.getResultList();
+        return Employee.findAllEmployees();
     }
 
 }

@@ -2,8 +2,10 @@ package at.htl.quarkus;
 
 import javax.inject.Inject;
 import javax.json.Json;
+import javax.print.DocFlavor;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -20,4 +22,10 @@ public class BarbershopResource {
          return  Response.ok().entity(service.getAll()).build();
     }
 
+    @GET
+    @Path("{name}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getByName(@PathParam("name") String name){
+        return Response.ok().entity(service.getByName(name)).build();
+    }
 }

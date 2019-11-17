@@ -1,20 +1,17 @@
 package at.htl.entity;
 
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
+
 import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import java.util.List;
 
 @Entity
-@NamedQueries({
-        @NamedQuery(name = "Blowdryer.findAll", query = "select b from Blowdryer b"),
-        @NamedQuery(name = "Blowdryer.findBySettings", query = "select b from Blowdryer b where b.heatSettings = :SETTINGS")
-})
-public class Blowdryer extends Equipment{
+public class Blowdryer extends Equipment {
 
     private int heatSettings;
     private boolean hasCoolShot;
-
-
 
     //region Constructor
     public Blowdryer() {
@@ -24,6 +21,16 @@ public class Blowdryer extends Equipment{
         super(name, quantity);
         this.heatSettings = heatSettings;
         this.hasCoolShot = hasCoolShot;
+    }
+    //endregion
+
+    //region Entity methods
+    public static List<Blowdryer> findAllBlowdryers(){
+        return Blowdryer.findAll().list();
+    }
+
+    public static List<Blowdryer> findBySettings(int heatSettings){
+        return find("heatSettings", heatSettings).list();
     }
     //endregion
 
