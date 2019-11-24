@@ -7,7 +7,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
 
 @QuarkusTest
-public class BarberShopResourceTest {
+public class BarberShopResourceTestIT {
 
     @Test
     public void test01_getAllBarbershops(){
