@@ -33,6 +33,10 @@ public class Employee extends Person{
     public static List<Employee> findAllEmployees(){
         return Employee.findAll().list();
     }
+
+    public static Employee findByName(String name) {
+        return find("name", name).firstResult();
+    }
     //endregion
 
     //region Setter Getter

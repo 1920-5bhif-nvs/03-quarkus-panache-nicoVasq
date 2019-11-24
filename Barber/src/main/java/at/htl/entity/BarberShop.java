@@ -34,7 +34,7 @@ public class BarberShop extends PanacheEntity {
     }
 
     public static BarberShop findByName(String name){
-        return find("name", name).firstResult();
+        return BarberShop.find("name", name).firstResult();
     }
     //endregion
 

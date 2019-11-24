@@ -15,4 +15,7 @@ public class EmployeeService {
         return Employee.findAllEmployees();
     }
 
+    public Employee findByName(String name) {
+        return Employee.findByName(name);
+    }
 }

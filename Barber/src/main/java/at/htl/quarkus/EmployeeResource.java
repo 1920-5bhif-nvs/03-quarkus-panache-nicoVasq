@@ -23,4 +23,15 @@ public class EmployeeResource {
 
         return Response.status(200).entity(service.findAll()).build();
     }
+
+    @GET
+    @Path("/{name}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getEmployeeByName(@PathParam("name") String name){
+        Employee emp = service.findByName(name);
+        if(emp == null)
+            return Response.status(Response.Status.NOT_FOUND).build();
+        else
+            return Response.ok().entity(emp).build();
+    }
 }
