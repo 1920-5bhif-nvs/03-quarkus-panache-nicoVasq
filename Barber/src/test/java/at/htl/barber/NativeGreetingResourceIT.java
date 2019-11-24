@@ -1,4 +1,4 @@
-package at.htl.quickstart;
+package at.htl.barber;
 
 import io.quarkus.test.junit.SubstrateTest;
 

@@ -6,13 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Barber" />
+        <module name="barber" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="Barber" target="1.8" />
-      <module name="barber" target="1.8" />
-      <module name="barberst" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>
