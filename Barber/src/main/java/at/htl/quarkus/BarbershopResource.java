@@ -4,11 +4,10 @@ import at.htl.entity.BarberShop;
 
 import javax.inject.Inject;
 import javax.json.Json;
+import javax.json.JsonObject;
 import javax.print.DocFlavor;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.transaction.Transactional;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
@@ -38,5 +37,18 @@ public class BarbershopResource {
             return Response.status(Response.Status.NOT_FOUND).build();
         else
             return Response.ok().entity(shop).build();
+    }
+
+    @POST
+    @Transactional
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response post(JsonObject shopData){
+        BarberShop shop = new BarberShop();
+        shop.setName(shopData.getString("name"));
+        BarberShop ret = service.addBarberShop(shop);
+        if(ret == null)
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+        else
+            return Response.ok().entity(ret).build();
     }
 }

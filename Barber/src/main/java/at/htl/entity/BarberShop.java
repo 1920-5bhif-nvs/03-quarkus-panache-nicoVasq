@@ -1,9 +1,11 @@
 package at.htl.entity;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import org.hibernate.cfg.NotYetImplementedException;
 
 import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
+import javax.transaction.Transactional;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -35,6 +37,22 @@ public class BarberShop extends PanacheEntity {
 
     public static BarberShop findByName(String name){
         return BarberShop.find("name", name).firstResult();
+    }
+
+    @Transactional
+    public static BarberShop createBarbershop(BarberShop shop){
+        shop.persist();
+        return shop;
+    }
+
+    @Transactional
+    public static BarberShop updateBarbershop(BarberShop updatedShop){
+        throw new NotYetImplementedException();
+    }
+
+    @Transactional
+    public static long deleteBarbershop(String name){
+        return delete("name",name);
     }
     //endregion
 

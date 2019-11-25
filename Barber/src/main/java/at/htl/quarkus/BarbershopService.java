@@ -18,4 +18,8 @@ public class BarbershopService {
     }
 
     public BarberShop getByName(String name) { return BarberShop.findByName(name); }
+
+    public BarberShop addBarberShop(BarberShop shop) {
+        return BarberShop.createBarbershop(shop);
+    }
 }
