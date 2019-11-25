@@ -46,11 +46,6 @@ public class BarberShop extends PanacheEntity {
     }
 
     @Transactional
-    public static BarberShop updateBarbershop(BarberShop updatedShop){
-        throw new NotYetImplementedException();
-    }
-
-    @Transactional
     public static long deleteBarbershop(String name){
         return delete("name",name);
     }

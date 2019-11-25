@@ -2,6 +2,7 @@ package at.htl.entity;
 
 import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
+import javax.transaction.Transactional;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -36,6 +37,27 @@ public class Employee extends Person{
 
     public static Employee findByName(String name) {
         return find("name", name).firstResult();
+    }
+
+    @Transactional
+    public static Employee addEmployee(Employee emp) {
+        emp.persist();
+        return emp;
+    }
+
+    @Transactional
+    public static long deleteEmployee(String name) {
+        return delete("name", name);
+    }
+
+    @Transactional
+    public static Employee updateEmployee(Employee emp) {
+        Employee e =  findByName(emp.getName());
+        if(e != null)
+            return null;
+
+        e.setSalary(emp.salary);
+        return e;
     }
     //endregion
 

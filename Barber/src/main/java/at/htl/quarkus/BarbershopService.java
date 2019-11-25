@@ -22,4 +22,6 @@ public class BarbershopService {
     public BarberShop addBarberShop(BarberShop shop) {
         return BarberShop.createBarbershop(shop);
     }
+
+    public Long removeBarbershop(String name) { return BarberShop.deleteBarbershop(name); }
 }

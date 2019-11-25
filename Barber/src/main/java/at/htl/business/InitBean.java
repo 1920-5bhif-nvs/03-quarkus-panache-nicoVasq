@@ -48,18 +48,18 @@ public class InitBean {
         shop.AddEquipment(haircolor2);
         shop.AddEquipment(haircolor3);
 
+        Employee employee = new Employee("Sophie",1200, shop);
+        Employee employee2 = new Employee("Dianna",1205, shop);
+        employee.persist();
+        employee2.persist();
 
         Customer customer = new Customer("Tom", LocalDate.of(2018, Month.JUNE, 6));
         Customer customer2 = new Customer("Max", LocalDate.of(2018, Month.JUNE, 23));
         customer.persist();
         customer2.persist();
 
-        Employee employee = new Employee("Sophie",1200, shop);
-        Employee employee2 = new Employee("Dianna",1205, shop);
         Service service = new Service(customer, employee, "Cut Hair",20, customer.getLastVisited());
         Service service2 = new Service(customer2, employee2, "Dye Hair", 50, customer2.getLastVisited());
-        employee.persist();
-        employee2.persist();
         service.persist();
         service2.persist();
 
