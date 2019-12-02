@@ -164,5 +164,13 @@ List<BarberShop> shopList = BarberShop.list("name", shopName);
 
  //All list methods have equivalent stream versions
 
+==== Conclusion
+
+Hibernate ORM makes complex mappings possible, but many simple and common
+mappings can also be complex. +
+Hibernate ORM with Panache simplifies a lot of things for the programmer. It also saves a lot of code, for example,
+by extending PanacheEntity in your entities, you will get an ID field that is auto-generated. +
+All in all you can say, it makes Hibernate really easy to use.
+
 
 
