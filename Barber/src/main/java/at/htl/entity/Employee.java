@@ -41,6 +41,9 @@ public class Employee extends Person{
 
     @Transactional
     public static Employee addEmployee(Employee emp) {
+        BarberShop shop = BarberShop.findByName(emp.getBarberShop().getName());
+        emp.setBarberShop(shop);
+
         emp.persist();
         return emp;
     }
