@@ -39,8 +39,11 @@ public class EmployeeResource {
     @POST
     @Transactional
     public Response post(Employee payload){
-        service.createEmployee(payload);
-        return Response.ok().build();
+        Employee emp = service.createEmployee(payload);
+        if(emp == null)
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+
+        return Response.ok().entity(emp).build();
     }
 
     @PUT
