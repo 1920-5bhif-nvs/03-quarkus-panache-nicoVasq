@@ -13,10 +13,6 @@ and their equipment _- see diagrams_
 
 `mvn compile quarkus:dev`
 
-*Starting the Docker-Container*
-
-`...`
-
 *Starting the Docker-Container: Database*
 
 `docker run --name postgres -p 5432:5432 -e POSTGRES_PASSWORD=passme -d postgres`
@@ -41,15 +37,43 @@ image::images/ide_db_details.png[title="Connection details",500]
 
 `*/barbershop*`
 
-* GET `/barbershop{name}`
+* GET `/barbershop{name}` +
     Produces: application/json
-* GET `/barbershop`
+
+* GET `/barbershop` +
+    Produces: application/json
+
+* DELETE `/barbershop/{name}` +
+    Consumes: application/json +
+    Produces: application/json
+
+* POST `/barbershop` +
+    Consumes: application/json +
     Produces: application/json
 
 `*/employee*`
 
-* GET `/employee`
+* GET `/employee` +
     Produces: application/json
+
+* GET `/employee/{name}` +
+    Consumes: application/json +
+    Produces: application/json
+
+
+* POST `/employee` +
+    Consumes: application/json +
+    Produces: application/json
+
+* PUT `/employee` +
+    Consumes: application/json +
+    Produces: application/json
+
+* DELETE `/employee/{name}` +
+    Consumes: application/json +
+    Produces: application/json
+
+
 
 
 == Diagrams
@@ -59,6 +83,11 @@ image::CLD.png[]
 
 === ERD
 image::ERD.png[]
+
+=== Use-Case Diagram
+Use-case for hiring employees and (for example) raising/lowering their salary
+
+image::images/usecase_diagram.png[]
 
 == Panache
 
